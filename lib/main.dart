@@ -108,13 +108,13 @@ class _ISDropDownState extends State<ISDropDown> {
                       ...List.generate(
                         3,
                         (index) {
-                          if (index.toString() != _text) {
+                          if (index.toString() == _text || _text == '') {
                             return SizedBox(
                           width: double.infinity,
                           height: 44,
                           child: CupertinoButton(
                             color: CupertinoColors.activeOrange,
-                            child: Text('${index.toString() != _text ? index : 'этот'}'),
+                            child: Text('$index'),
                             onPressed: () async {
                               log('$index', name: 'onPressed dropDown-element');
                               Future.delayed(
