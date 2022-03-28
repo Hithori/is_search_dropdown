@@ -99,15 +99,19 @@ class _ISDropDownState extends State<ISDropDown> {
               height: widget.heightDrop,
             ),
             child: Material(
+              color: Color(0),
               child: Container(
-                color: CupertinoColors.extraLightBackgroundGray,
+                color: Color(0),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
                       ...List.generate(
-                        15,
-                        (index) => SizedBox(
+                        3,
+                        (index) {
+                          if (index.toString() != _text) {
+                            return SizedBox(
                           width: double.infinity,
+                          height: 44,
                           child: CupertinoButton(
                             color: CupertinoColors.activeOrange,
                             child: Text('${index.toString() != _text ? index : 'этот'}'),
@@ -119,7 +123,11 @@ class _ISDropDownState extends State<ISDropDown> {
                               );
                             },
                           ),
-                        ),
+                        );
+                          } else {
+                            return const SizedBox.shrink();
+                          }
+                        },
                       ),
                     ],
                   ),
@@ -147,6 +155,7 @@ class _ISDropDownState extends State<ISDropDown> {
           }
         },
         child: CupertinoTextField(
+          keyboardType: TextInputType.number,
           key: inputKey,
           onTap: () {
             openDropdown();
