@@ -31,14 +31,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
+      backgroundColor: Colors.white,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
+          children: <Widget>[
+            const Text(
               'You have pushed the button this many times:',
             ),
-            ISDropDown(),
+            ISDropDown(widthDrop: MediaQuery.of(context).size.width,),
           ],
         ),
       ),
@@ -47,7 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class ISDropDown extends StatefulWidget {
-  const ISDropDown({Key? key}) : super(key: key);
+  const ISDropDown({Key? key, this.heightDrop = 220, required this.widthDrop}) : super(key: key);
+  final double heightDrop;
+  final double widthDrop;
 
   @override
   State<ISDropDown> createState() => _ISDropDownState();
@@ -93,7 +96,7 @@ class _ISDropDownState extends State<ISDropDown> {
             rect: Rect.fromCenter(
               center: RectGetter.getRectFromKey(itemKey)!.bottomCenter.translate(0, 100),
               width: MediaQuery.of(context).size.width - 32,
-              height: 200,
+              height: widget.heightDrop,
             ),
             child: Material(
               child: Container(
