@@ -94,7 +94,7 @@ class _ISDropDownState extends State<ISDropDown> {
           ),
           Positioned.fromRect(
             rect: Rect.fromCenter(
-              center: RectGetter.getRectFromKey(itemKey)!.bottomCenter.translate(0, 100),
+              center: RectGetter.getRectFromKey(itemKey)!.bottomCenter.translate(0, 110),
               width: MediaQuery.of(context).size.width - 32,
               height: widget.heightDrop,
             ),
